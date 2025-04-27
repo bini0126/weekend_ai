@@ -10,3 +10,16 @@
 5. 데이터 전송 :  git push
 
 계속 반복하기
+
+새 파일 생성 : touch new_file.txt
+새 폴더 생성 : mkdir new_folder
+
+1. git init: 새로운 Git 저장소 초기화
+2. git clone: 원격 저장소 복제
+3. git add .: 변경 사항 스테이징
+4. git commit -m "메시지": 커밋
+5. git push: 원격 저장소에 푸시
+6. git pull: 최신 변경 사항 가져오기
+7. git branch / git checkout: 브랜치 관리
+8. git merge: 브랜치 병합
+9. git log: 커밋 히스토리 확인
