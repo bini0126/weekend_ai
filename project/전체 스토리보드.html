@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>영화 성공 예측 AI 프로젝트</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      padding: 40px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    th {
+      background-color: #ecf0f1;
+    }
+    ul {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎬 영화 성공 예측 AI 프로젝트</h1>
+
+  <section>
+    <h2>1. 서론 – 프로젝트 목적</h2>
+    <p>콘텐츠 산업은 실패 비용이 큽니다. 본 프로젝트는 영화나 시리즈가 공개되기 전에, 기본 정보를 바탕으로 성공 여부를 예측할 수 있는 인공지능 모델을 구축하는 것을 목표로 합니다.</p>
+  </section>
+
+  <section>
+    <h2>2. 데이터 수집</h2>
+    <h3>📌 주요 수집 항목</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>컬럼명</th>
+          <th>설명</th>
+          <th>출처</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>기본 정보</td>
+            <td>title</td>
+            <td>제목</td>
+            <td>TMDb, IMDb</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>release_date</td>
+            <td>공개일</td>
+            <td>TMDb</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>type</td>
+            <td>영화/시리즈</td>
+            <td>FlixPatrol</td>
+        </tr>
+        <tr>
+            <td>제작 정보</td>
+            <td>director</td>
+            <td>감독</td>
+            <td>IMDb</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>cast</td>
+            <td>출연진</td>
+            <td>IMDb</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>genre</td>
+            <td>장르</td>
+            <td>TMDb</td>
+        </tr>
+        <tr>
+            <td>성과 지표</td>
+            <td>imdb_rating</td>
+            <td>IMDb 평점</td>
+            <td>IMDb</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>imdb_review_count</td>
+            <td>리뷰 수</td>
+            <td>IMDb</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>netflix_rank</td>
+            <td>Netflix 랭킹</td>
+            <td>Netflix Top10</td>
+        </tr>
+        <tr>
+            <td>파생 변수</td>
+            <td>success_label</td>
+            <td>성공 여부(0/1)</td>
+            <td>위 기준 기반</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>3. 데이터 전처리</h2>
+    <ul>
+      <li>결측치 제거 및 정규화</li>
+      <li>장르/키워드 리스트화 또는 원핫 인코딩</li>
+      <li>숫자형 컬럼 변환 (ex. 리뷰 수, 평점)</li>
+      <li>감독 및 배우별 ‘흥행 점수’ 계산</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. 성공 기준 정의</h2>
+    <p><strong>성공 콘텐츠</strong>의 조건:</p>
+    <ul>
+      <li>IMDb 평점 ≥ 7.0</li>
+      <li>IMDb 리뷰 수 ≥ 1000</li>
+      <li>또는 Netflix Top10 진입</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. 시각화 분석</h2>
+    <ul>
+      <li>장르별 성공률 (Barplot)</li>
+      <li>국가 vs 장르 매트릭스 (Heatmap)</li>
+      <li>감독/배우 인기 그룹 분석</li>
+      <li>연도별 성공 콘텐츠 수 변화</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. AI 모델링</h2>
+    <p><strong>모델:</strong> RandomForestClassifier, XGBoost</p>
+    <p><strong>입력 (Features):</strong> 장르, 감독 점수, 배우 인기, 러닝타임 등</p>
+    <p><strong>출력 (Target):</strong> success_label (0/1)</p>
+    <p><strong>평가:</strong> Accuracy, F1 Score, Confusion Matrix</p>
+  </section>
+
+  <section>
+    <h2>7. 결론 및 시사점</h2>
+    <ul>
+      <li>AI가 콘텐츠 성공 여부를 약 80% 정확도로 예측 가능</li>
+      <li>감독/배우/장르가 예측에 가장 큰 영향을 미침</li>
+      <li>OTT 산업에서 기획 단계의 참고자료로 활용 가능</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>8. 발표용 PPT 슬라이드 구성</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>슬라이드</th>
+          <th>제목</th>
+          <th>내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>프로젝트 개요</td><td>문제 정의, 목표</td></tr>
+        <tr><td>2</td><td>데이터 수집</td><td>API 구조, 컬럼 소개</td></tr>
+        <tr><td>3</td><td>전처리 과정</td><td>결측치, 인코딩</td></tr>
+        <tr><td>4</td><td>성공 기준</td><td>라벨링 정의</td></tr>
+        <tr><td>5</td><td>시각화 분석</td><td>성공률, 장르별 분석</td></tr>
+        <tr><td>6</td><td>AI 모델 설명</td><td>학습 방법, 평가</td></tr>
+        <tr><td>7</td><td>결과 요약</td><td>예측 정확도, 주요 인사이트</td></tr>
+        <tr><td>8</td><td>활용 방안</td><td>기획, 투자 판단 참고</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>
